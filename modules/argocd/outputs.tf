@@ -1,3 +1,8 @@
 output "argocd_url" {
-  value = "http://devops.localhost/argocd"
+  description = "The ArgoCD url."
+  value       = "http://${var.argocd_host_name}/argocd"
+}
+
+output "argocd_admin_password" {
+  value = data.external.argocd_password.result.argocd_password
 }

@@ -9,3 +9,5 @@ resource "helm_release" "deploy_argocd" {
 
   values = [file("${path.module}/values.yaml")]
 }
+
+

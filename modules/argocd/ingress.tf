@@ -6,16 +6,16 @@ resource "kubernetes_ingress_v1" "argocd_ingress" {
     namespace = var.argocd_namespace_name
 
     annotations = {
-      "kubernetes.io/ingress.class"                      = "traefik"
+      "kubernetes.io/ingress.class"                      = var.argocd_ingress_class_name
       "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
     }
   }
 
   spec {
-    ingress_class_name = "traefik"
+    ingress_class_name = var.argocd_ingress_class_name
 
     rule {
-      host = "devops.localhost"
+      host = var.argocd_host_name
 
       http {
         path {
