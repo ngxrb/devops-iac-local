@@ -1,3 +1,3 @@
 output "argocd_url" {
-  value = "http://localhost/argocd"
+  value = "http://devops.localhost/argocd"
 }
