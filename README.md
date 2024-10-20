@@ -8,7 +8,7 @@ This project sets up a local Kubernetes environment using **Traefik** and **Argo
 - `kubectl` CLI configured for Rancher Desktop's Kubernetes cluster
 - Helm installed ([Helm installation guide](https://helm.sh/docs/intro/install/))
 
-## Traefik Dashboard Setup
+## Traefik Dashboard Setup (Optional)
 
 ### Steps to Expose the Traefik Dashboard
 

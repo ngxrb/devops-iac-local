@@ -1,27 +1,21 @@
-variable "deployment_name" {
-  description = "Deployment name (eg. local, saas)."
-  type        = string
-  default     = "local"
-
-  validation {
-    condition = can(regex(module.shared.k8s_name_regex, var.deployment_name))
-    error_message = "Invalid deployment name. Must follow Kubernetes naming conventions."
-  }
-}
-
 variable "kubernetes_config_path" {
-  description = "Kubernetes Config Path"
+  description = "The Kubernetes config path."
   type        = string
   default     = "~/.kube/config"
 
   validation {
-    condition = can(regex(module.shared.path_regex, var.kubernetes_config_path))
+    condition     = can(regex(module.shared.path_regex, var.kubernetes_config_path))
     error_message = "Invalid Kubernetes config path. Must be a valid path."
   }
 }
 
 variable "kubernetes_config_context" {
-  description = "Kubernetes Config Context"
+  description = "The Kubernetes config context."
   type        = string
   default     = "rancher-desktop"
+
+  validation {
+    condition     = can(regex(module.shared.k8s_name_regex, var.kubernetes_config_context))
+    error_message = "Invalid Kubernetes config context. Must follow Kubernetes naming conventions."
+  }
 }

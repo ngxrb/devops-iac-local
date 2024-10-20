@@ -1,9 +1,9 @@
-resource "kubernetes_ingress_v1" "argocd" {
-  depends_on = [helm_release.argocd]
+resource "kubernetes_ingress_v1" "argocd_ingress" {
+  depends_on = [helm_release.deploy_argocd]
 
   metadata {
     name      = "argocd-ingress"
-    namespace = var.namespace_name
+    namespace = var.argocd_namespace_name
 
     annotations = {
       "kubernetes.io/ingress.class"                      = "traefik"
@@ -21,9 +21,11 @@ resource "kubernetes_ingress_v1" "argocd" {
         path {
           path      = "/argocd"
           path_type = "Prefix"
+
           backend {
             service {
               name = "argocd-server"
+
               port {
                 number = 80
               }

@@ -1,13 +1,8 @@
-module "shared" {
-  source = "git::https://github.com/ngxrb/iac-commons.git//modules/shared"
+module "deploy_devops_environment" {
+  source = "./modules/devops_environment"
 }
 
-module "devops_namespace" {
-  source          = "./modules/devops_namespace"
-  deployment_name = var.deployment_name
-}
-
-module "argocd" {
-  source         = "./modules/argocd"
-  namespace_name = "local-argocd"
+module "deploy_argocd" {
+  source                = "./modules/argocd"
+  argocd_namespace_name = "local-argocd"
 }

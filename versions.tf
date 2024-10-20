@@ -1,14 +1,13 @@
 terraform {
   required_version = ">= 1.9.7"
-}
 
-provider "kubernetes" {
-  config_path    = var.kubernetes_config_path
-  config_context = var.kubernetes_config_context
-}
+  required_providers {
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
 
-provider "helm" {
-  kubernetes {
-    config_path = var.kubernetes_config_path
+    helm = {
+      source = "hashicorp/helm"
+    }
   }
 }
