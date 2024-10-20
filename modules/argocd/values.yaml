@@ -1,0 +1,5 @@
+server:
+  extraArgs:
+    - --insecure
+    - --basehref=/argocd
+    - --rootpath=/argocd
